@@ -1,6 +1,6 @@
 
 
-.display {
+#display {
   display: inline-block;
   padding: .5em;
   width: 12.2em;
@@ -10,9 +10,10 @@
   margin:.2em .2em;
   font-family: monospace;
   font-size: 17px;
+  text-align: right;
 }
 
-.calcbutton {
+section {
   display: inline-block;
   padding: .5em;
   width: 2em;
@@ -25,12 +26,12 @@
   font-size: 17px;
 }
 
-.calcbutton:hover {
+section:hover {
   cursor: pointer;
   background-color: pink;
 }
 
-.calcbutton:active {
+section:active {
   background-color: #ff748c;
 }
 
