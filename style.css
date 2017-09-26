@@ -28,11 +28,11 @@ section {
 
 section:hover {
   cursor: pointer;
-  background-color: pink;
+  background-color: #858585;
 }
 
 section:active {
-  background-color: #ff748c;
+  background-color: #5f5f5f;
 }
 
 P {
@@ -40,23 +40,31 @@ P {
   margin: 6px auto;
 }
 
-#equals-button {
-  height: 5.4em;
-  position: absolute;
-}
-
 #zero {
   width: 5.4em;
 }
 
-#ac, #ce {
+#ac {
+  width: 8.8em;
+  background-color: #ffc0cb;
+}
+
+#ac:hover {
+  background-color: #ff526f;
+}
+
+#ac:active {
+  background-color: #d90026;
+}
+
+.operator-button {
   background-color: #dae3f3;
 }
 
-#ac:hover, #ce:hover {
+.operator-button:hover {
   background-color: #87ceff;
 }
 
-#ac:active, #ce:active {
+.operator-button:active {
   background-color: #4f93cc;
 }
