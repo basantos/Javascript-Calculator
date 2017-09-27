@@ -21,16 +21,20 @@ var enteredButtons = [];
 var nextNum = '';
 var lastAnswerOnScreen = false;
 var alreadyDecimal = false;
+var previousIsOperator = false;
 
 /* Event Listeners */
 $('.number-button').click(function(){
+  debugger;
   // Deletes last session when new number is pressed
   if(lastAnswerOnScreen){
+    previousIsOperator = false;
     displayText = $(this).data('value');
     lastAnswerOnScreen = false;
     enteredButtons = [];
     nextNum = $(this).data('value');
   } else {
+    previousIsOperator = false;
     displayText = $('#display').text() + $(this).data('value');
     nextNum += $(this).data('value');
   }
@@ -39,9 +43,16 @@ $('.number-button').click(function(){
 });
 
 $('.operator-button').click(function(){
+  debugger;
   // Don't run if first input is an operator
   if(nextNum === '' && enteredButtons.length === 0){
     displayText = '';
+  } // Makes sure there's only one operator per pair of numbers
+  // Allows the changing of current operator
+  else if(previousIsOperator){
+    enteredButtons.pop();
+    enteredButtons.push($(this).data('value'));
+    displayText = displayText.slice(0,displayText.length-1) + $(this).data('value');
   } // Continue operations when equals-button already pressed at least once in a session
   else if(lastAnswerOnScreen){
     displayText = $('#display').text() + $(this).data('value');
@@ -49,12 +60,14 @@ $('.operator-button').click(function(){
     nextNum = '';
     lastAnswerOnScreen = false;
     alreadyDecimal = false;
+    previousIsOperator = true;
   } else {
     displayText = $('#display').text() + $(this).data('value');
     enteredButtons.push(nextNum);
     nextNum = '';
     enteredButtons.push($(this).data('value'));
     alreadyDecimal = false;
+    previousIsOperator = true;
   }
 
   $('#display').text(displayText);
@@ -77,6 +90,7 @@ $('#ac').click(function(){
 });
 
 $('#equals-button').click(function(){
+  debugger;
   var answer = enteredButtons[0];
   for(var i=1; i<enteredButtons.length; i++){
     if(i%2 !== 0){
@@ -98,7 +112,11 @@ $('#equals-button').click(function(){
       }
     }
   }
+  alreadyDecimal = false;
+  previousIsOperator = false;
+  displayText = answer;
+  nextNum = answer;
   enteredButtons = [answer];
   lastAnswerOnScreen = true;
-  $('#display').text(answer);
+  $('#display').text(displayText);
 });
