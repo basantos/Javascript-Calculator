@@ -1,3 +1,5 @@
+const SCREEN_LIMIT = 28;
+
 /* Operations */
 function add(x,y){
   return x*1+y*1;
@@ -22,12 +24,26 @@ var nextNum = '';
 var lastAnswerOnScreen = false;
 var alreadyDecimal = false;
 var previousIsOperator = false;
+var errorOnScreen = false;
 
 /* Event Listeners */
 $('.number-button').click(function(){
-  debugger;
-  // Deletes last session when new number is pressed
-  if(lastAnswerOnScreen){
+
+  if(errorOnScreen){
+    enteredButtons = [];
+    nextNum = '';
+    lastAnswerOnScreen = true;
+    alreadyDecimal = false;
+    previousIsOperator = false;
+    displayText = '';
+    errorOnScreen = false;
+  }
+
+  if(SCREEN_LIMIT <= displayText.length){
+    displayText = 'Screen limit reached.'
+    errorOnScreen = true;
+  } // Deletes last session when new number is pressed
+  else if(lastAnswerOnScreen){
     previousIsOperator = false;
     displayText = $(this).data('value');
     lastAnswerOnScreen = false;
@@ -43,7 +59,6 @@ $('.number-button').click(function(){
 });
 
 $('.operator-button').click(function(){
-  debugger;
   // Don't run if first input is an operator
   if(nextNum === '' && enteredButtons.length === 0){
     displayText = '';
@@ -90,7 +105,6 @@ $('#ac').click(function(){
 });
 
 $('#equals-button').click(function(){
-  debugger;
   var answer = enteredButtons[0];
   for(var i=1; i<enteredButtons.length; i++){
     if(i%2 !== 0){
