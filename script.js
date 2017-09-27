@@ -16,38 +16,21 @@ function divide(x,y){
 }
 
 /* Variables */
+var displayText = '';
 var enteredButtons = [];
 var nextNum = '';
 var lastAnswerOnScreen = false;
-var operators = /[\+x\/\-]/;
+var alreadyDecimal = false;
 
 /* Event Listeners */
-$('.display-enabled-value').click(function(){
-  var displayText;
-
-  // Don't run if first input is an operator
-  if(nextNum === '' && operators.test($(this).data('value'))){
-    displayText = '';
-  } // Continue operations when equels-button already hit
-  else if(lastAnswerOnScreen && operators.test($(this).data('value'))){
-    displayText = $('#display').text() + $(this).data('value');
-    enteredButtons.push($(this).data('value'));
-    nextNum = '';
-    lastAnswerOnScreen = false;
-  } // Deletes last session when new number is pressed
-  else if(lastAnswerOnScreen && !operators.test($(this).data('value'))){
+$('.number-button').click(function(){
+  // Deletes last session when new number is pressed
+  if(lastAnswerOnScreen){
     displayText = $(this).data('value');
     lastAnswerOnScreen = false;
     enteredButtons = [];
     nextNum = $(this).data('value');
-  } // Input operations
-  else if(operators.test($(this).data('value'))){
-    displayText = $('#display').text() + $(this).data('value');
-    enteredButtons.push(nextNum);
-    nextNum = '';
-    enteredButtons.push($(this).data('value'));
-  } // Input numbers
-  else {
+  } else {
     displayText = $('#display').text() + $(this).data('value');
     nextNum += $(this).data('value');
   }
@@ -55,12 +38,43 @@ $('.display-enabled-value').click(function(){
   $('#display').text(displayText);
 });
 
+$('.operator-button').click(function(){
+  // Don't run if first input is an operator
+  if(nextNum === '' && enteredButtons.length === 0){
+    displayText = '';
+  } // Continue operations when equals-button already pressed at least once in a session
+  else if(lastAnswerOnScreen){
+    displayText = $('#display').text() + $(this).data('value');
+    enteredButtons.push($(this).data('value'));
+    nextNum = '';
+    lastAnswerOnScreen = false;
+    alreadyDecimal = false;
+  } else {
+    displayText = $('#display').text() + $(this).data('value');
+    enteredButtons.push(nextNum);
+    nextNum = '';
+    enteredButtons.push($(this).data('value'));
+    alreadyDecimal = false;
+  }
+
+  $('#display').text(displayText);
+});
+
+$('#decimal-button').click(function(){
+  if(!alreadyDecimal){
+    alreadyDecimal = true;
+    nextNum += $(this).data('value');
+    $('#display').text($('#display').text() + $(this).data('value'));
+  }
+});
+
 $('#ac').click(function(){
   $('#display').text('');
   nextNum = '';
   lastAnswerOnScreen = false;
   enteredButtons = [];
-})
+  alreadyDecimal = false;
+});
 
 $('#equals-button').click(function(){
   var answer = enteredButtons[0];
