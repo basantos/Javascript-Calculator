@@ -1,4 +1,15 @@
+body {
+  font-family: monospace, sans-serif;
+  font-size: 17px;
+}
 
+#container {
+  margin: 75px auto 10px auto;
+  padding: .5em;
+  text-align: center;
+  border: thin gray solid;
+  width: 13.6em;
+}
 
 #display {
   display: inline-block;
@@ -8,8 +19,6 @@
   vertical-align: middle;
   background-color: #f2f2f2;
   margin:.2em .2em;
-  font-family: monospace;
-  font-size: 17px;
   text-align: right;
 }
 
@@ -22,7 +31,6 @@ section {
   vertical-align: middle;
   background-color: #bfbfbf;
   margin:.2em .2em;
-  font-family: monospace;
   font-size: 17px;
 }
 
@@ -35,9 +43,11 @@ section:active {
   background-color: #5f5f5f;
 }
 
-P {
-  vertical-align: middle;
-  margin: 6px auto;
+p {
+  text-align: center;
+  margin: 0 auto;
+  font-size: .5em;
+  color: #858585;
 }
 
 #zero {
@@ -67,4 +77,17 @@ P {
 
 .operator-button:active {
   background-color: #4f93cc;
+}
+
+a {
+  color: #858585;
+}
+
+a:hover {
+  cursor: pointer;
+  color: #bfbfbf;
+}
+
+a:active {
+  color: #5f5f5f;
 }

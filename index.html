@@ -6,71 +6,74 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="display">
+    <div id="container">
+      <div id="display">
+
+      </div>
+      <div class="row">
+        <section id="ac" class="calcbutton">
+          AC
+        </section><!--
+        --><section id="divide-button" class="display-enabled-value operator-button" data-value="/">
+          /
+        </section>
+      </div>
+      <div class="row">
+        <section class="number-button" data-value="7">
+          7
+        </section><!--
+        --><section class="number-button" data-value="8">
+          8
+        </section><!--
+        --><section class="number-button" data-value="9">
+          9
+        </section><!--
+        --><section id="multiply-button" class="operator-button" data-value="x">
+          x
+        </section>
+      </div>
+      <div class="row">
+        <section class="number-button" data-value="4">
+          4
+        </section><!--
+        --><section class="number-button" data-value="5">
+          5
+        </section><!--
+        --><section class="number-button" data-value="6">
+          6
+        </section><!--
+        --><section id="subtract-button" class="operator-button" data-value="-">
+          -
+        </section>
+      </div>
+      <div class="row">
+        <section id="one" class="number-button" data-value="1">
+          1
+        </section><!--
+        --><section class="number-button" data-value="2">
+          2
+        </section><!--
+        --><section class="number-button" data-value="3">
+          3
+        </section><!--
+        --><section id="add-button" class="operator-button" data-value="+">
+          +
+        </section>
+      </div>
+      <div class="row">
+        <section id="zero" class="number-button" data-value="0">
+          0
+        </section><!--
+        --><section id="decimal-button" data-value=".">
+          .
+        </section><!--
+        --><section id="equals-button">
+          =
+        </section>
+      </div>
 
     </div>
-    <div class="row">
-      <section id="ac" class="calcbutton">
-        AC
-      </section><!--
-      --><section id="divide-button" class="display-enabled-value operator-button" data-value="/">
-        /
-      </section>
-    </div>
-    <div class="row">
-      <section class="number-button" data-value="7">
-        7
-      </section><!--
-      --><section class="number-button" data-value="8">
-        8
-      </section><!--
-      --><section class="number-button" data-value="9">
-        9
-      </section><!--
-      --><section id="multiply-button" class="operator-button" data-value="x">
-        x
-      </section>
-    </div>
-    <div class="row">
-      <section class="number-button" data-value="4">
-        4
-      </section><!--
-      --><section class="number-button" data-value="5">
-        5
-      </section><!--
-      --><section class="number-button" data-value="6">
-        6
-      </section><!--
-      --><section id="subtract-button" class="operator-button" data-value="-">
-        -
-      </section>
-    </div>
-    <div class="row">
-      <section id="one" class="number-button" data-value="1">
-        1
-      </section><!--
-      --><section class="number-button" data-value="2">
-        2
-      </section><!--
-      --><section class="number-button" data-value="3">
-        3
-      </section><!--
-      --><section id="add-button" class="operator-button" data-value="+">
-        +
-      </section>
-    </div>
-    <div class="row">
-      <section id="zero" class="number-button" data-value="0">
-        0
-      </section><!--
-      --><section id="decimal-button" data-value=".">
-        .
-      </section><!--
-      --><section id="equals-button">
-        =
-      </section>
-    </div>
-
+    <p id="signature"><a href="github.com/basantos/Javascript-Calculator">A Javascript Calculator</a> by <a href="github.com/basantos/">Brigitte Santos</a></p>
 
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="script.js"></script>

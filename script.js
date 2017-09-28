@@ -1,4 +1,4 @@
-const SCREEN_LIMIT = 28;
+const SCREEN_LIMIT = 22;
 
 /* Operations */
 function add(x,y){
@@ -28,7 +28,7 @@ var errorOnScreen = false;
 
 /* Event Listeners */
 $('.number-button').click(function(){
-
+//debugger;
   if(errorOnScreen){
     enteredButtons = [];
     nextNum = '';
@@ -39,7 +39,7 @@ $('.number-button').click(function(){
     errorOnScreen = false;
   }
 
-  if(SCREEN_LIMIT <= displayText.length){
+  if(SCREEN_LIMIT <= displayText.toString().trim().length){
     displayText = 'Screen limit reached.'
     errorOnScreen = true;
   } // Deletes last session when new number is pressed
