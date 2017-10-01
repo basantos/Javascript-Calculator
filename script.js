@@ -89,7 +89,13 @@ $('.operator-button').click(function(){
 });
 
 $('#decimal-button').click(function(){
-  if(!alreadyDecimal){
+  if(lastAnswerOnScreen){
+    lastAnswerOnScreen = false;
+    alreadyDecimal = true;
+    nextNum = '.';
+    enteredButtons = [];
+    $('#display').text($(this).data('value'));
+  } else if(!alreadyDecimal){
     alreadyDecimal = true;
     nextNum += $(this).data('value');
     $('#display').text($('#display').text() + $(this).data('value'));
