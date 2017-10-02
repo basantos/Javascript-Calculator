@@ -1,36 +1,36 @@
 body {
   font-family: monospace, sans-serif;
-  font-size: 17px;
 }
 
 #container {
   margin: 75px auto 10px auto;
-  padding: .5em;
+  padding: 8.5px;
   text-align: center;
   border: thin gray solid;
-  width: 13.6em;
+  width: 231.2px;
+  font-size: 23px;
 }
 
 #display {
   display: inline-block;
-  padding: .5em;
-  width: 12.2em;
-  height: 2em;
+  padding: 8.5px;
+  width: 207.4px;
+  height: 34px;
   vertical-align: middle;
   background-color: #f2f2f2;
-  margin:.2em .2em;
+  margin: 3.4px;
   text-align: right;
 }
 
 div div div {
   display: inline-block;
-  padding: .5em;
-  width: 2em;
-  height: 2em;
+  padding: 8.5px;
+  width: 34px;
+  height: 34px;
   text-align: center;
   vertical-align: middle;
   background-color: #bfbfbf;
-  margin:.2em .2em;
+  margin:3.4px;
   font-size: 17px;
 }
 
@@ -46,16 +46,16 @@ div div div:active {
 p {
   text-align: center;
   margin: 0 auto;
-  font-size: .5em;
+  font-size: 8.5px;
   color: #858585;
 }
 
 #zero {
-  width: 5.4em;
+  width: 91.8px;
 }
 
 #ac {
-  width: 8.8em;
+  width: 149.6px;
   background-color: #ffc0cb;
 }
 

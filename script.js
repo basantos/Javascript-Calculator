@@ -1,20 +1,31 @@
-const SCREEN_LIMIT = 22;
+const SCREEN_LIMIT = 15;
 
 /* Operations */
 function add(x,y){
-  return x*1+y*1;
+  return formatNum(x*1+y*1);
 }
 
 function subtract(x,y){
-  return x*1-y*1;
+  return formatNum(x*1-y*1);
 }
 
 function multiply(x,y){
-  return (x*1)*(y*1);
+  return formatNum((x*1)*(y*1));
 }
 
 function divide(x,y){
-  return (x*1).toFixed(1)/(y*1).toFixed(1);
+  return formatNum((x*1).toFixed(1)/(y*1).toFixed(1));
+}
+
+function formatNum(num){
+  num = num.toFixed(15).toString().split('');
+  for(var i=num.length-1; i>0; i--){
+    if(num[i] === '0' || num[i] === '.'){
+      num.pop();
+    } else {
+      return num.join('');
+    }
+  }
 }
 
 /* Variables */
@@ -28,7 +39,7 @@ var errorOnScreen = false;
 
 /* Event Listeners */
 $('.number-button').click(function(){
-//debugger;
+
   if(errorOnScreen){
     enteredButtons = [];
     nextNum = '';
@@ -40,7 +51,7 @@ $('.number-button').click(function(){
   }
 
   if(SCREEN_LIMIT <= displayText.toString().trim().length){
-    displayText = 'Screen limit reached.'
+    displayText = 'Limit reached.';
     errorOnScreen = true;
   } // Deletes last session when new number is pressed
   else if(lastAnswerOnScreen){
@@ -89,6 +100,16 @@ $('.operator-button').click(function(){
 });
 
 $('#decimal-button').click(function(){
+  if(errorOnScreen){
+    enteredButtons = [];
+    nextNum = '';
+    lastAnswerOnScreen = true;
+    alreadyDecimal = false;
+    previousIsOperator = false;
+    displayText = '';
+    errorOnScreen = false;
+  }
+
   if(lastAnswerOnScreen){
     lastAnswerOnScreen = false;
     alreadyDecimal = true;
@@ -122,7 +143,7 @@ $('#equals-button').click(function(){
         enteredButtons.push(nextNum);
         answer = subtract(answer,enteredButtons[i+1]);
       }
-      else if(enteredButtons[i] === 'x'){
+      else if(enteredButtons[i] === '*'){
         enteredButtons.push(nextNum);
         answer = multiply(answer,enteredButtons[i+1]);
       }
